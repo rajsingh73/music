@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #1db954;
+    --color-primary-hover: #1ed760;
+    --color-dark: #121212;
+    --color-paper: #181818;
+
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+    --animate-float: float 6s ease-in-out infinite;
+    --animate-float-delayed: float 6s ease-in-out 3s infinite;
+
+    @keyframes float {
+        0% {
+            transform: translateY(0px);
+        }
+
+        50% {
+            transform: translateY(-20px);
+        }
+
+        100% {
+            transform: translateY(0px);
+        }
+    }
+}
+
+/* --- Global Reset --- */
+body {
+    @apply bg-[#050505] text-white font-sans antialiased overflow-x-hidden;
+    background-image:
+        radial-gradient(circle at 15% 50%, rgba(76, 29, 149, 0.15) 0%, transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(29, 185, 84, 0.1) 0%, transparent 25%);
+}
+
+/* --- Glassmorphism Utilities --- */
+.glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-xl;
+}
+
+.glass-card {
+    @apply bg-[#181818]/60 backdrop-blur-md border border-white/5 rounded-2xl shadow-2xl;
+}
+
+.glass-input {
+    @apply w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-primary/50 focus:bg-white/10 focus:ring-1 focus:ring-primary/50 transition-all duration-300;
+}
+
+.btn-primary {
+    /* Removed the problematic hover:shadow-[...] from here */
+    @apply bg-primary hover:bg-primary-hover text-black font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+/* Added the shadow here as standard CSS to fix the error */
+.btn-primary:hover {
+    box-shadow: 0 0 20px rgba(29, 185, 84, 0.4);
+}
+
+/* --- Custom Scrollbar --- */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-gray-700 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500;
+}
